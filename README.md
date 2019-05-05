@@ -13,7 +13,7 @@ we create here an automatic player that guess the answer in the game "Bull And P
 Bull = good guess :+1: , good position :+1:  
 Pgia = good guess :+1: , bad position :-1:
 
-# Hierarchy :octocat: :
+# Hierarchy:
 SmartGuesser.cpp :arrow_forward: SmartGuesser.hpp :arrow_forward: Guesser.hpp
 
 * [PLAY ONLINE](http://www.archimedes-lab.org/mastermind.html)
