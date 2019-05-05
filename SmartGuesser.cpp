@@ -11,8 +11,8 @@ https://www.daniweb.com/programming/software-development/threads/149245/game-eva
 #include "Guesser.hpp"
 #include <iostream>
 #include <random>
+#include <cmath>
 using std::string;
-
 
 void bullpgia::SmartGuesser::initialize(string s){
     if(s.empty()) throw "technical win";
@@ -30,8 +30,8 @@ void bullpgia::SmartGuesser::swap(char &x, char &y)
 void bullpgia::SmartGuesser::PoolCombinations(string s ,int l, int r){
 
     int i;  
-    char one=s[i];//(s+i)
-    char two=s[l];//(s+l)
+    char one=s.at(i);//(s+i)
+    char two=s.at(i);//(s+l)
     if (l == r){
         combination.push_back(s);
     }
@@ -83,7 +83,7 @@ void bullpgia::SmartGuesser::learn(string calculate){
     }
     if(sumOf<firstGuess.length()){
         for(int i=sumOf;i<firstGuess.length();i++){
-            firstGuess[i]=firstGuess[i]+1;
+            firstGuess.at(i)=firstGuess.at(i)+1;
         }
         return;
     }    
