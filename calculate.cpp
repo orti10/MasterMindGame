@@ -8,7 +8,7 @@ namespace bullpgia{
     string bullpgia::calculateBullAndPgia(string choice, string guess){
         int bull=0;
         int pgia=0;
-        string ans="";
+        string ans="0,0";
         //first check:if the strings are in the same size
         if(choice.length()!=guess.length()) throw "you have a short/long guess";
         //loop to check pgia only
@@ -17,13 +17,17 @@ namespace bullpgia{
               if(choice.at(i)==guess.at(i)){
                     bull=bull+1; //there is a perfect guess
                 }
-                    else pgia=pgia+1;//there is almost a perfect guess 
+                    else {
+                        pgia=pgia+1;//there is almost a perfect guess 
+                    }
            }
         }
         cout<<"bull= "<<bull<<","<<"pgia= "<<pgia<<endl;//index 6,index13
         char b=bull+48;
         char p=pgia+48;
-        ans=b+','+p;//0,2
+        ans[0]=b;
+        ans[2]=p;
+        // ans=b+','+p;//0,2 for example
         return ans;
     }
 

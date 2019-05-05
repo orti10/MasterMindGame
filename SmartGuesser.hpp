@@ -14,8 +14,9 @@ namespace bullpgia{
         
         private:
         void initialize(string s);
-        void swap(char *x, char *y);
+        void swap(char &x, char &y);
         void PoolCombinations(string s, int l, int r);
+        
         public:
         string lastGuess,firstGuess;
         string smartSave="0123456789";

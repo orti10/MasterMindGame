@@ -20,26 +20,30 @@ void bullpgia::SmartGuesser::initialize(string s){
         firstGuess=firstGuess+'0';
     }
 }
-void bullpgia::SmartGuesser::swap(char *x, char *y)  
+void bullpgia::SmartGuesser::swap(char &x, char &y)  
 {  
     char temp;  
-    temp = *x;  
-    *x = *y;  
-    *y = temp;  
+    temp = x;  
+    x = y;  
+    y = temp;  
 } 
 void bullpgia::SmartGuesser::PoolCombinations(string s ,int l, int r){
+
     int i;  
+    char one=s[i];//(s+i)
+    char two=s[l];//(s+l)
     if (l == r){
-        combination.add(s);
+        combination.push_back(s);
     }
           
     else
     {  
         for (i = l; i <= r; i++)  
         {  
-            swap((a+l), (a+i));  
-            permute(a, l+1, r);  
-            swap((a+l), (a+i)); //backtrack  
+
+            swap(two, one);  
+            //permute(s, l+1, r);  
+            swap(two, one); //backtrack  
         }  
     }  
 }
@@ -70,16 +74,16 @@ void bullpgia::SmartGuesser::learn(string calculate){
     
     sumOf=(calculate.at(0)-48)+(calculate.at(2)-48);//sum of bull and pgia in total
     if(sumOf==firstGuess.length() && !combination.empty()){ //combitations!!
-		PoolCombinations(firstGuess);
+		PoolCombinations(firstGuess,0,0);
 	}
 	if(sumOf==firstGuess.length()){
-        firstGuess=combination.at[0];
+        firstGuess=combination[0];
         combination.erase(combination.begin()/*at[0]*/);
         return ;
     }
     if(sumOf<firstGuess.length()){
         for(int i=sumOf;i<firstGuess.length();i++){
-            firstGuess.at(i)=firstGuess.at(i)+1;
+            firstGuess[i]=firstGuess[i]+1;
         }
         return;
     }    
