@@ -7,7 +7,8 @@ namespace bullpgia{
     
     class Chooser{
         private:
-        uint lenght;
+        uint length;
+        string choice;
         
         public: 
         virtual string choose(uint length)=0;

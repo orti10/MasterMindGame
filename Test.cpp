@@ -1,7 +1,7 @@
 /**
  * A demo program for bull-pgia.
  * 
- * @author Erel Segal-Halevi
+ * @author Ortal and Tomer
  * @since  2019-04
  */
 
@@ -72,8 +72,9 @@ int main() {
 		testcase.setname("Play with smart guesser");
 		RandomChooser randy;
 		SmartGuesser smarty;
-		for (uint i=0; i<100; ++i) {
-			testcase.CHECK_EQUAL(play(randy, smarty, 4, 100)<=100, true);  // smarty should always win in at most 10 turns!
+		for (uint i=0; i<400; ++i) {
+			// smarty should always win in at most 10 turns!
+			testcase.CHECK_EQUAL(play(randy, smarty, 4, 100)<=100, true); 
 		}
 
     grade = testcase.grade();

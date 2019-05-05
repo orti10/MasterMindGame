@@ -5,7 +5,7 @@ namespace bullpgia{
     
     class Guesser{
         protected:
-        string s;
+        string lastGuess;
         uint length;
 
         public:
