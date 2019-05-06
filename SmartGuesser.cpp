@@ -11,7 +11,6 @@ https://www.daniweb.com/programming/software-development/threads/149245/game-eva
 #include "Guesser.hpp"
 #include <iostream>
 
-
 using std::string;
 using namespace std;
 
@@ -40,78 +39,53 @@ void bullpgia::SmartGuesser::PoolCombinations(string s ,int size, int n){
             swap(s.at(i),s.at(size-1));
         }
     }
-    
 }
 
 void bullpgia::SmartGuesser::startNewGame(uint length){
-    // for(auto it=combination.begin();it!=combination.end();it++){
-    //     combination.pop_back();
-    // }
      
-    if (combination.size() >0){
-        cout<<"--------------------------"<<endl;
+    if (!combination.empty()){
         combination.clear();
     }
-    cout<<"ll"<<endl;
-   firstGuess="";            
-    for(int i=0;i<length;i++){
-
+    firstGuess="";            
+    for(int i=0;i<length;i++){ //making sure we start with zeros
         firstGuess=firstGuess+'0';
     }   
-    cout<<firstGuess<<endl;
-
-    sumOf=0;
-    counterGuess=0;
+    sumOf=0;//fresh start
+    counterGuess=0;//fresh start
     cout<<"starts a new game"<<endl;
 }
+
 string bullpgia::SmartGuesser::guess(){
    
-    // int random = rand() % combination.size();
-    // auto it = combination.begin();
-    // advance(it, random); //advance the iterator 'it' by n element positions (here n=random)
-    // firstGuess = *it;
-    // if(counterGuess==0){
-    //    counterGuess++;
-    //    return firstGuess;
-    // }
-
-    // return firstGuess;
-   
-if(counterGuess==0){
+    if(counterGuess==0){
       counterGuess++;
     return firstGuess;
-  }
-   else if(counterGuess<10 && sumOf!=4){
+    }
+    //checking if the counter less then 10 and also that the sum of bull+pgia not a 4
+    else if(counterGuess<10 && sumOf!=4){
             counterGuess++;
             return firstGuess;
         }
-   return firstGuess;
+    return firstGuess;
 }
 
 
 void bullpgia::SmartGuesser::learn(string calculate){
    // cout<<sumOf << endl;
     sumOf=(calculate.at(0)-48)+(calculate.at(2)-48);//sum of bull and pgia in total
-    cout<<"asdasdasdjad: "<<combination.empty()<<endl;
     if(sumOf==firstGuess.length() && combination.size()==0){ //combitations!!
-       
-        cout << "in first if"<<endl;
         int n = sizeof firstGuess/sizeof firstGuess.at(0);
         PoolCombinations(firstGuess,sumOf,n);
 
-        cout<<"the size is: " << combination.size()<<endl;
-        cout << "\nthe elements are: ";
         for(auto it=combination.begin();it!=combination.end();it++){
             cout<<*it<<" ";
         }
 	}
 	if(sumOf==firstGuess.length()){
-        cout << "in second if"<<endl;
         auto it = combination.begin();
         advance(it,0);
         firstGuess=*it;
-        combination.pop_back();
-      //  cout<<"the size is: " << combination.size()<<endl;
+        combination.pop_front();
         return ;
     }
     if(sumOf<firstGuess.length()){
@@ -122,15 +96,4 @@ void bullpgia::SmartGuesser::learn(string calculate){
         }
         return;
     }    
-
-    // auto it = combination.begin();
-    // while( it != combination.end()) {
-    //     string ans = calculateBullAndPgia(firstGuess, *it);
-    //     if(ans != calculate) {
-    //        it = combination.erase(it);
-    //     }
-    //     else it++;
-    // }
-        
-    
 }
