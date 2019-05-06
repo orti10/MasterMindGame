@@ -74,6 +74,7 @@ int main() {
 		SmartGuesser smarty;
 		for (uint i=0; i<400; ++i) {
 			// smarty should always win in at most 10 turns!
+			cout <<i<<endl;
 			testcase.CHECK_EQUAL(play(randy, smarty, 4, 100)<=100, true); 
 		}
 
