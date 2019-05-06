@@ -7,7 +7,7 @@
 
 #include "play.hpp"
 #include "calculate.hpp"
-#include <iostream>
+//#include <iostream>
 #include <string>
 using std::string;
 
@@ -24,12 +24,9 @@ namespace bullpgia {
 		uint indexOfTurn;
 		for (indexOfTurn=0; indexOfTurn<maxTurns; ++indexOfTurn) {
 			string guess = guesser.guess();
-		//cout<<"choice ->>"<<guess<<endl;
 
 			if (guess.length()!=length)  // Illegal guess
 				return TECHNICAL_VICTORY_TO_CHOOSER;
-			cout << "choice: " << choice <<endl;
-			cout << "guess: " << guess <<endl;	
 			if (guess==choice) {
 				return indexOfTurn + 1; 
 			} else {

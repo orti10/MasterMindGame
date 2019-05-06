@@ -15,7 +15,7 @@ namespace bullpgia{
         void PoolCombinations(string s, int l, int r);
         
         public:
-        string firstGuess;
+        string firstGuess="";
         list <string> combination;
         uint length;
         int counterGuess=0;
