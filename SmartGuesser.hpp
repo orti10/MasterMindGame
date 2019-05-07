@@ -10,9 +10,6 @@ using std::string;
 namespace bullpgia{
     class SmartGuesser:public bullpgia::Guesser{
         
-        private:
-        void swap(char &x, char &y);
-        void PoolCombinations(string s, int l, int r);
         
         public:
         string firstGuess="";

@@ -5,38 +5,18 @@ https://searchcode.com/codesearch/view/87676843/
 
 https://www.daniweb.com/programming/software-development/threads/149245/game-evaluation-mastermind 
 
+https://en.cppreference.com/w/cpp/algorithm/next_permutation
 */
 
 #include "SmartGuesser.hpp"
 #include "Guesser.hpp"
 #include <iostream>
-
+#include<string>
+#include<iostream>
+#include<algorithm>
 using std::string;
 using namespace std;
 
-void bullpgia::SmartGuesser::swap(char &x, char &y) //swaping between 2 chars
-{  
-    char temp;  
-    temp = x;  
-    x = y;  
-    y = temp;  
-} 
-//function that creates a list of optional combinations from the numbers we got from the guess
-void bullpgia::SmartGuesser::PoolCombinations(string s ,int size, int n){
-    if(size==1){
-        combination.push_back(s);//addition string value to the list
-        return;
-    }
-    for(int i=0;i<size;i++){
-        PoolCombinations(s,size-1,n);//rec
-        if(size%2==1){//if size id odd
-            swap(s.at(0),s.at(size-1));//calling swap function to make option to the list
-        }
-        else{
-            swap(s.at(i),s.at(size-1));
-        }
-    }
-}
 
 void bullpgia::SmartGuesser::startNewGame(uint length){
      
@@ -69,11 +49,15 @@ string bullpgia::SmartGuesser::guess(){
 
 void bullpgia::SmartGuesser::learn(string calculate){
     sumOf=(calculate.at(0)-48)+(calculate.at(2)-48);//sum of bull and pgia in total
-    if(sumOf==firstGuess.length() && combination.size()==0){ //combitations!!
-        int n = sizeof firstGuess/sizeof firstGuess.at(0);
-        PoolCombinations(firstGuess,sumOf,n);
+    if(sumOf==firstGuess.length() && combination.size()==0){ // making the combination list
+        do
+        {
 
-        //printing the combinations:   -optional-
+            combination.push_back(firstGuess); //adding the strings to the array
+
+        }while(std::next_permutation(firstGuess.begin(),firstGuess.end()));//iterate the string
+
+        //   printing the combinations:   -optional-
         // for(auto it=combination.begin();it!=combination.end();it++){
         //     cout<<*it<<" ";
         // }

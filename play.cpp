@@ -8,6 +8,8 @@
 #include "play.hpp"
 #include "calculate.hpp"
 #include <string>
+#include <iostream>
+
 using std::string;
 
 namespace bullpgia {
@@ -26,6 +28,7 @@ namespace bullpgia {
 
 			if (guess.length()!=length)  // Illegal guess
 				return TECHNICAL_VICTORY_TO_CHOOSER;
+			
 			if (guess==choice) {
 				return indexOfTurn + 1; 
 			} else {
