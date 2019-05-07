@@ -8,7 +8,6 @@
 #include "play.hpp"
 #include "calculate.hpp"
 #include <string>
-#include <iostream>
 
 using std::string;
 
